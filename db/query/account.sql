@@ -14,12 +14,11 @@ FROM accounts
 ORDER BY id
 LIMIT $1 OFFSET $2;
 
--- name: UpdateAccount :exec
+-- name: UpdateAccount :one
 UPDATE accounts
-SET owner    = $1,
-    balance  = $2,
-    currency = $3
-WHERE id = $4;
+SET balance = $1
+WHERE id = $2
+RETURNING *;
 
 -- name: DeleteAccount :exec
 DELETE
