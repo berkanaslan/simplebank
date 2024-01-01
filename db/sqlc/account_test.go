@@ -45,7 +45,7 @@ func TestDeleteAccount(t *testing.T) {
 	require.Empty(t, account2)
 }
 
-func TestGetAccount(t *testing.T) {
+func TestQueries_GetAccount(t *testing.T) {
 	account := createRandomAccount(t)
 	account2, err := testQueries.GetAccount(context.Background(), account.ID)
 
@@ -58,7 +58,7 @@ func TestGetAccount(t *testing.T) {
 	require.WithinDuration(t, account.CreatedAt, account2.CreatedAt, time.Second)
 }
 
-func TestListAccounts(t *testing.T) {
+func TestQueries_ListAccounts(t *testing.T) {
 	arg := ListAccountsParams{
 		Limit:  10,
 		Offset: 0,
@@ -70,7 +70,7 @@ func TestListAccounts(t *testing.T) {
 	require.NotEmpty(t, accounts)
 }
 
-func TestUpdateAccount(t *testing.T) {
+func TestQueries_UpdateAccount(t *testing.T) {
 	account := createRandomAccount(t)
 
 	arg := UpdateAccountParams{

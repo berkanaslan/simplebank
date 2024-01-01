@@ -28,13 +28,13 @@ func createRandomTransfer(t *testing.T, fromAccount Account, toAccount Account) 
 	return transfer
 }
 
-func TestCreateTransfer(t *testing.T) {
+func TestQueries_CreateTransfer(t *testing.T) {
 	fromAccount := createRandomAccount(t)
 	toAccount := createRandomAccount(t)
 	createRandomTransfer(t, fromAccount, toAccount)
 }
 
-func TestGetTransfer(t *testing.T) {
+func TestQueries_GetTransfer(t *testing.T) {
 	fromAccount := createRandomAccount(t)
 	toAccount := createRandomAccount(t)
 	newTransfer := createRandomTransfer(t, fromAccount, toAccount)
@@ -50,7 +50,7 @@ func TestGetTransfer(t *testing.T) {
 	require.WithinDuration(t, newTransfer.CreatedAt, transfer.CreatedAt, time.Second)
 }
 
-func TestListTransfers(t *testing.T) {
+func TestQueries_ListTransfers(t *testing.T) {
 	fromAccount := createRandomAccount(t)
 	toAccount := createRandomAccount(t)
 
